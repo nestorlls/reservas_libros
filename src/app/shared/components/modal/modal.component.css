@@ -1,0 +1,48 @@
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.close i {
+  font-size: 1.4rem;
+  color: var(--gray-900);
+}
+
+.close i:hover {
+  transform: scale(1.1);
+}
+
+.message-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.message {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--gray-900);
+}
+
+.btn-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}

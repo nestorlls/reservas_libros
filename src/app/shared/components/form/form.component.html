@@ -1,0 +1,25 @@
+<form class="form">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      formControlName="username"
+      type="text"
+      placeholder="Testino"
+      class="form-input"
+      [value]="userData!.username || ''"
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      formControlName="email"
+      type="email"
+      placeholder="testino@example.com"
+      class="form-input"
+      [value]="userData!.email || ''"
+    />
+  </div>
+  <div class="form-action">
+    <button type="submit" class="btn btn-success">{{ btnText }}</button>
+  </div>
+</form>

@@ -1,0 +1,12 @@
+<div class="modal">
+  <span class="close" (click)="closeModal()"
+    ><i class="uil uil-times"></i
+  ></span>
+  <div class="message-wrapper">
+    <p class="message">{{ data.message }}</p>
+    <div class="btn-wrapper">
+      <button class="btn btn-primary" (click)="confirm()">YES</button>
+      <button class="btn btn-danger" (click)="closeModal()">NO</button>
+    </div>
+  </div>
+</div>
