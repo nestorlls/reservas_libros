@@ -14,6 +14,7 @@ export class CreateFormComponent {
   formCreate: FormGroup = new FormGroup({});
   users: any[] = [];
   books: any[] = [];
+  message: string | null = '';
 
   constructor(
     private _userService: UserService,
@@ -28,8 +29,8 @@ export class CreateFormComponent {
     this.formCreate = new FormGroup({
       user: new FormControl('', [Validators.required]),
       book: new FormControl('', [Validators.required]),
-      date_reserved: new FormControl(''),
-      date_due: new FormControl(''),
+      date_reserved: new FormControl('', [Validators.required]),
+      date_due: new FormControl('', [Validators.required]),
     });
   }
 
@@ -39,8 +40,11 @@ export class CreateFormComponent {
     this._reservationService
       .createReservation$(user, book, date_reserved, date_due)
       .subscribe((res) => {
-        this.dialogRef.close();
-        console.log(res);
+        if (res.message) {
+          this.message = res.message;
+        } else {
+          this.dialogRef.close();
+        }
       });
   }
 
@@ -52,7 +56,6 @@ export class CreateFormComponent {
 
   private getAllBooks() {
     this._bookService.getAllBooks$().subscribe((res) => {
-      console.log(res);
       this.books = res;
     });
   }
