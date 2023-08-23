@@ -29,7 +29,11 @@ export class CreateBookComponent implements OnInit {
     this._bookService
       .createBook$(title, author, description)
       .subscribe((res) => {
-        this._router.navigate(['/book']);
+        if (res.message) {
+          this.message = res.message;
+        } else {
+          this._router.navigate(['/book']);
+        }
       });
   }
 }
