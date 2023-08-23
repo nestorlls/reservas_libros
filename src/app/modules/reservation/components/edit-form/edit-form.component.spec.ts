@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import { EditFormComponent } from './edit-form.component';
 
@@ -8,7 +11,9 @@ describe('EditFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EditFormComponent]
+      declarations: [EditFormComponent],
+      imports: [HttpClientTestingModule, ReactiveFormsModule, MatDialogModule],
+      providers: [MatDialogRef],
     });
     fixture = TestBed.createComponent(EditFormComponent);
     component = fixture.componentInstance;

@@ -3,13 +3,10 @@
   <form class="form" (submit)="onSubmit($event)" [formGroup]="formCreate">
     <div class="form-group">
       <label for="username">user</label>
-      <select
-        name="username"
-        id="username"
-        formControlName="user"
-        [value]="formCreate.value.user"
-      >
-        <option defaultSelected disabled>--Select User--</option>
+      <select name="username" id="username" formControlName="user">
+        <option [selected]="true" value="null" [disabled]="true">
+          --Select User--
+        </option>
         <option *ngFor="let user of users" [ngValue]="user._id">
           {{ user.username }}
         </option>
@@ -18,13 +15,10 @@
 
     <div class="form-group">
       <label for="book">Books</label>
-      <select
-        name="book"
-        id="book"
-        formControlName="book"
-        [value]="formCreate.value.book"
-      >
-        <option [defaultSelected]="true" value="null">--Select Book--</option>
+      <select name="book" id="book" formControlName="book">
+        <option [selected]="true" value="null" [disabled]="true">
+          --Select Book--
+        </option>
         <option *ngFor="let book of books" [ngValue]="book._id">
           {{ book.title }}
         </option>
@@ -41,8 +35,14 @@
       <input type="date" name="date_reserved" formControlName="date_due" />
     </div>
 
+    <div class="message" *ngIf="message">
+      <span class="error">{{ message }}</span>
+    </div>
+
     <div class="form-action">
-      <button class="btn btn-success">Create</button>
+      <button [disabled]="formCreate.invalid" class="btn btn-success">
+        Create
+      </button>
     </div>
   </form>
 </div>
