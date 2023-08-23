@@ -8,10 +8,7 @@ import { DialogService } from '@shared/services/dialog.service';
   styleUrls: ['./reservation-page.component.css'],
 })
 export class ReservationPageComponent {
-  constructor(
-    private _reservationService: ReservationService,
-    private _dialogService: DialogService
-  ) {}
+  constructor(private _dialogService: DialogService) {}
 
   openDialog() {
     this._dialogService.openFormDialogCreate();
