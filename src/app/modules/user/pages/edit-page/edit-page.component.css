@@ -23,6 +23,12 @@
   border-radius: 50%;
   align-items: center;
   justify-content: center;
+  background-color: var(--gray-700);
+}
+
+.back i {
+  font-size: 1.5rem;
+  color: white;
 }
 
 .back:hover {
