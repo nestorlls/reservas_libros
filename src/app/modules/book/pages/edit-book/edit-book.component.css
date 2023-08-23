@@ -23,6 +23,12 @@
   border-radius: 50%;
   align-items: center;
   justify-content: center;
+  background-color: var(--gray-700);
+}
+
+.back i {
+  font-size: 1.5rem;
+  color: white;
 }
 
 .back:hover {
@@ -68,6 +74,11 @@ label {
   margin-top: 1rem;
 }
 
+.message-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .success {
   position: absolute;
   top: -1rem;
@@ -75,5 +86,5 @@ label {
   align-items: center;
   justify-content: center;
   width: 500px;
-  color: var(--green-500);
+  color: var(--green-400);
 }

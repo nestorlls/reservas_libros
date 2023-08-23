@@ -60,3 +60,18 @@ input {
   justify-content: center;
   margin-top: 1rem;
 }
+
+.message {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  font-size: 1rem;
+  color: red;
+}
