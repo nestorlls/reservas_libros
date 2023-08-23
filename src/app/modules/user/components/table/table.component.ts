@@ -35,6 +35,9 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+    this._userService.RefreshRequired$.subscribe(() => {
+      this.loadData();
+    });
   }
 
   loadData() {
@@ -48,7 +51,7 @@ export class TableComponent implements OnInit {
   deleteUser(IdUser: string) {
     this._userService.getUserById$(IdUser).subscribe((user) => {
       this._dialogService
-        .openConfirmDialog(`¿Desea eliminar al usuario ${user.username}?`)
+        .openConfirmDialog(`Do you want to delete ${user.username}?`)
         .afterClosed()
         .subscribe((result) => {
           if (result) {

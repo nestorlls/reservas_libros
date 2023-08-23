@@ -29,7 +29,11 @@ export class CreatePageComponent implements OnInit {
     const { username, email } = this.formCreate.value;
     this._userService.createUser$(username, email).subscribe(
       (res) => {
-        this._router.navigate(['/users']);
+        if (res.message) {
+          this.message = res.message;
+        } else {
+          this._router.navigate(['/users']);
+        }
       },
       (err) => {
         this.message = err.error.message;

@@ -52,7 +52,7 @@ export class TableComponent implements OnInit {
   deleteReservation(id: string | null) {
     this._reservationService.getReservationById$(id).subscribe((res) => {
       this._dialogService
-        .openConfirmDialog(`¿Desea eliminar la reserva de ${res.book.title}?`)
+        .openConfirmDialog(`Do you want to delete ${res.book.title}?`)
         .afterClosed()
         .subscribe((result) => {
           if (result) {
