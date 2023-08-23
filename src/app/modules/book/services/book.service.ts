@@ -11,16 +11,14 @@ export class BookService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAllBooks$(pageSize: number = 100, page: number = 1): Observable<any> {
-    return this.httpClient
-      .get(`${this.URL}/book?pageSize=${pageSize}&page=${page}`)
-      .pipe(
-        map((data: any) => data),
-        catchError((err) => {
-          console.log('Something went wrong', err);
-          return of([]);
-        })
-      );
+  getAllBooks$(): Observable<any> {
+    return this.httpClient.get(`${this.URL}/book`).pipe(
+      map((data: any) => data),
+      catchError((err) => {
+        console.log('Something went wrong', err);
+        return of([]);
+      })
+    );
   }
 
   getBookById$(id: string | null): Observable<any> {

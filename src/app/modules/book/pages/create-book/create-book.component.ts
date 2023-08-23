@@ -21,10 +21,6 @@ export class CreateBookComponent implements OnInit {
         Validators.minLength(3),
       ]),
       author: new FormControl('', [Validators.required]),
-      description: new FormControl('', [
-        Validators.required,
-        Validators.minLength(15),
-      ]),
     });
   }
 

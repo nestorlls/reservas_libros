@@ -1,0 +1,55 @@
+<div class="form-wrapper">
+  <span class="close" (click)="closeForm()"><i class="uil uil-times"></i></span>
+  <form class="form" (submit)="onSubmit($event)" [formGroup]="formEdit">
+    <div class="form-group">
+      <label for="username">user</label>
+      <select name="username" formControlName="user">
+        <option
+          *ngFor="let user of users"
+          [ngValue]="user._id"
+          [selected]="user._id === selectedUser"
+        >
+          {{ user.username }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="book">Books</label>
+      <select name="book" id="book" formControlName="book">
+        ">
+        <option
+          *ngFor="let book of books"
+          [ngValue]="book._id"
+          [selected]="book._id === selectedBook"
+        >
+          {{ book.title }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="date_reserved">Date reserved</label>
+      <input
+        type="date"
+        name="date_reserved"
+        formControlName="date_reserved"
+        [value]="formEdit.value.date_reserved | date : 'yyyy-MM-dd'"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="date_reserved">Date due</label>
+      <input
+        type="date"
+        name="date_reserved"
+        formControlName="date_due"
+        [value]="formEdit.value.date_due | date : 'yyyy-MM-dd'"
+      />
+    </div>
+
+    <div class="form-action">
+      <button class="btn btn-success">Update</button>
+    </div>
+  </form>
+</div>

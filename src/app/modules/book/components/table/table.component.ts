@@ -14,7 +14,7 @@ export class TableComponent implements OnInit {
     'position',
     'title',
     'author',
-    'description',
+    'status',
     'edit',
     'delete',
   ];
@@ -30,11 +30,11 @@ export class TableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    this.loadData(100, 1);
+    this.loadData();
   }
 
-  loadData(pageSize: number, page: number) {
-    this._bookService.getAllBooks$(pageSize, page).subscribe((books) => {
+  loadData() {
+    this._bookService.getAllBooks$().subscribe((books) => {
       this.listBooks = books;
       this.dataSource = new MatTableDataSource(this.listBooks);
       this.dataSource.paginator = this.paginator;
@@ -49,7 +49,7 @@ export class TableComponent implements OnInit {
         .subscribe((result) => {
           if (result) {
             this._bookService.deleteBook$(id).subscribe(() => {
-              this.loadData(100, 1);
+              this.loadData();
             });
           }
         });

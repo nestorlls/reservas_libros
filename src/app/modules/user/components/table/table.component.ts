@@ -34,11 +34,11 @@ export class TableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    this.loadData(100, 1);
+    this.loadData();
   }
 
-  loadData(pageSize: number, page: number) {
-    this._userService.getAllUsers$(pageSize, page).subscribe((users) => {
+  loadData() {
+    this._userService.getAllUsers$().subscribe((users) => {
       this.listUsers = users;
       this.dataSource = new MatTableDataSource(this.listUsers);
       this.dataSource.paginator = this.paginator;
@@ -53,7 +53,7 @@ export class TableComponent implements OnInit {
         .subscribe((result) => {
           if (result) {
             this._userService.deleteUser$(IdUser).subscribe(() => {
-              this.loadData(100, 1);
+              this.loadData();
             });
           }
         });

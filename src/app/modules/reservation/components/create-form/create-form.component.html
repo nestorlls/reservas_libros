@@ -1,0 +1,48 @@
+<div class="form-wrapper">
+  <span class="close" (click)="closeForm()"><i class="uil uil-times"></i></span>
+  <form class="form" (submit)="onSubmit($event)" [formGroup]="formCreate">
+    <div class="form-group">
+      <label for="username">user</label>
+      <select
+        name="username"
+        id="username"
+        formControlName="user"
+        [value]="formCreate.value.user"
+      >
+        <option defaultSelected disabled>--Select User--</option>
+        <option *ngFor="let user of users" [ngValue]="user._id">
+          {{ user.username }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="book">Books</label>
+      <select
+        name="book"
+        id="book"
+        formControlName="book"
+        [value]="formCreate.value.book"
+      >
+        <option [defaultSelected]="true" value="null">--Select Book--</option>
+        <option *ngFor="let book of books" [ngValue]="book._id">
+          {{ book.title }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="date_reserved">Date reserved</label>
+      <input type="date" name="date_reserved" formControlName="date_reserved" />
+    </div>
+
+    <div class="form-group">
+      <label for="date_reserved">Date due</label>
+      <input type="date" name="date_reserved" formControlName="date_due" />
+    </div>
+
+    <div class="form-action">
+      <button class="btn btn-success">Create</button>
+    </div>
+  </form>
+</div>

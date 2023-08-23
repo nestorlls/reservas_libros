@@ -10,16 +10,14 @@ export class UserService {
   private readonly URL = environment.API_URL;
   constructor(private httpClient: HttpClient) {}
 
-  getAllUsers$(pageSize: number = 100, page: number = 1): Observable<any> {
-    return this.httpClient
-      .get(`${this.URL}/user?pageSize=${pageSize}&page=${page}`)
-      .pipe(
-        map((data: any) => data),
-        catchError((err) => {
-          console.log('Something went wrong', err);
-          return of([]);
-        })
-      );
+  getAllUsers$(): Observable<any> {
+    return this.httpClient.get(`${this.URL}/user`).pipe(
+      map((data: any) => data),
+      catchError((err) => {
+        console.log('Something went wrong', err);
+        return of([]);
+      })
+    );
   }
 
   getUserById$(id: string | null): Observable<any> {
