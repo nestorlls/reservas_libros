@@ -76,7 +76,7 @@ export class ReservationService {
 
     return this.httpClient.put(`${this.URL}/reservation/${id}`, body).pipe(
       tap((res: any) => {
-        console.log(res);
+        this._refresheReservation.next(res);
       })
     );
   }
@@ -84,7 +84,7 @@ export class ReservationService {
   deleteReservation$(id: string | null): Observable<any> {
     return this.httpClient.delete(`${this.URL}/reservation/${id}`).pipe(
       tap((res: any) => {
-        console.log(res);
+        this._refresheReservation.next(res);
       })
     );
   }
