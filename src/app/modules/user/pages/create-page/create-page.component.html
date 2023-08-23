@@ -1,8 +1,8 @@
 <div class="create-page">
   <div class="section">
-    <span class="back" [routerLink]="['/user']"
+    <a class="back" [routerLink]="['/user']"
       ><i class="uil uil-angle-left"></i
-    ></span>
+    ></a>
     <div class="constainer">
       <div class="create-page__page">
         <div>
@@ -26,6 +26,10 @@
                 placeholder="testino@example.com"
                 class="form-input"
               />
+            </div>
+
+            <div class="message-wrapper">
+              <span class="message">{{ message }}</span>
             </div>
             <div class="form-action">
               <button
