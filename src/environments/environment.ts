@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'http://localhost:3000/api/user',
+  API_URL: 'https://reservasapi-production.up.railway.app/api',
 };
