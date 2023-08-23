@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, of, tap } from 'rxjs';
+import { Observable, Subject, catchError, map, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   private readonly URL = environment.API_URL;
+  private _refreshRequired$ = new Subject<any>();
+  get RefreshRequired$(): Observable<any> {
+    return this._refreshRequired$.asObservable();
+  }
+
   constructor(private httpClient: HttpClient) {}
 
   getAllUsers$(): Observable<any> {
@@ -38,7 +43,7 @@ export class UserService {
 
     return this.httpClient.post(`${this.URL}/auth/signup`, body).pipe(
       tap((res: any) => {
-        return res;
+        this._refreshRequired$.next(res);
       })
     );
   }
@@ -54,7 +59,7 @@ export class UserService {
     };
     return this.httpClient.put(`${this.URL}/user/${id}`, body).pipe(
       tap((res: any) => {
-        console.log(res);
+        this._refreshRequired$.next(res);
       })
     );
   }
@@ -62,7 +67,7 @@ export class UserService {
   deleteUser$(id: string | null): Observable<any> {
     return this.httpClient.delete(`${this.URL}/user/${id}`).pipe(
       tap((res: any) => {
-        console.log(res);
+        this._refreshRequired$.next(res);
       })
     );
   }
