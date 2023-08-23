@@ -1,7 +1,6 @@
-import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { User } from '@core/Models/User.model';
 import { UserService } from '@modules/user/services/user.service';
 

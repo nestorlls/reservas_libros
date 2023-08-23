@@ -1,29 +1,38 @@
 <div class="create-page">
   <div class="section">
-    <span class="back" [routerLink]="['/user']"
+    <span class="back" [routerLink]="['/book']"
       ><i class="uil uil-angle-left"></i
     ></span>
     <div class="constainer">
       <div class="create-page__page">
         <div>
-          <h1>Create new user</h1>
-          <form class="form" (ngSubmit)="onSubmit()" [formGroup]="formCreate">
+          <h1>Create new Book</h1>
+          <form class="form" [formGroup]="formCreate" (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <label for="username">Username</label>
+              <label for="title">Title</label>
               <input
-                formControlName="username"
+                formControlName="title"
                 type="text"
-                placeholder="Testino"
+                placeholder="Test"
                 class="form-input"
                 vali
               />
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
+              <label for="author">Author</label>
               <input
-                formControlName="email"
-                type="email"
-                placeholder="testino@example.com"
+                formControlName="author"
+                type="text"
+                placeholder="Testino"
+                class="form-input"
+              />
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input
+                formControlName="description"
+                type="text"
+                placeholder="Testino"
                 class="form-input"
               />
             </div>
